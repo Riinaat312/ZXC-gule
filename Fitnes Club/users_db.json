@@ -1,0 +1,13 @@
+[
+    {
+        "firstName": "\u0414\u0430\u043d\u0438\u0438\u043b",
+        "lastName": "\u0412\u0430\u0433\u0430\u043d\u043e\u0432",
+        "email": "daniilwag@gmail.com",
+        "password": "pbkdf2:sha256:600000$ySIuedBcTTJzjky8$31493032188da69d21e9606a59d5e48375dcf30998743ade193a341f505b31df",
+        "phone": "+79614083890",
+        "birthdate": "2006-07-20",
+        "membershipType": "basic",
+        "registrationDate": "2025-05-15T22:47:20.032245",
+        "id": 1
+    }
+]

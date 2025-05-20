@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Тренеры - Фитнес-клуб "Здоровая Жизнь"</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    .hero-section {
+      background-image: url('img/pototo.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    /* Стили для карточек тренеров */
+    .trainer-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    
+    .trainer-card:hover {
+      transform: translateY(-8px); /* Уменьшено с -10px */
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .trainer-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.25rem; /* Уменьшено с 1.5rem */
+      background: linear-gradient(to top, rgba(22, 101, 52, 0.95), rgba(22, 101, 52, 0.7), transparent);
+      color: white;
+      transform: translateY(70%);
+      transition: transform 0.4s ease;
+    }
+    
+    .trainer-card:hover .trainer-info {
+      transform: translateY(0);
+    }
+    
+    .trainer-specialties {
+      margin-top: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      transition-delay: 0.1s;
+    }
+    
+    .trainer-card:hover .trainer-specialties {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .trainer-contact {
+      margin-top: 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      transition-delay: 0.2s;
+    }
+    
+    .trainer-card:hover .trainer-contact {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <script>AOS.init();</script>
+
+  <!-- Заголовок -->
+  <header class="bg-green-600 text-white p-6 shadow-md" data-aos="fade-down">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold">
+        <a href="main.html">Здоровая Жизнь</a>
+      </h1>
+      <nav class="space-x-6 text-lg">
+        <a href="main.html" class="hover:underline">Главная</a>
+        <a href="main.html#about" class="hover:underline">О нас</a>
+        <a href="main.html#services" class="hover:underline">Услуги</a>
+        <a href="main.html#gallery" class="hover:underline">Галерея</a>
+        <a href="page1.html" class="hover:underline">Расписание</a>
+        <a href="page2.html" class="hover:underline font-bold">Тренеры</a>
+        <a href="nutritionPlans.html" class="hover:underline">Питание</a>
+        <a href="blog.html" class="hover:underline">Блог</a>
+        <a href="pricing.html" class="hover:underline">Цены</a>
+        <a href="main.html#contact" class="hover:underline">Контакты</a>
+        <a href="register.html" class="bg-white text-green-600 px-4 py-2 rounded-full hover:bg-gray-100 transition" id="registerBtn">Регистрация</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Блок героя -->
+  <section class="hero-section py-20 text-center" data-aos="zoom-in">
+    <div class="hero-content">
+      <h2 class="text-4xl font-bold text-white mb-4">Познакомьтесь с нашими экспертами-тренерами</h2>
+      <p class="text-xl mb-6 text-white">Сертифицированные профессионалы, помогающие вам достичь ваших фитнес-целей</p>
+    </div>
+  </section>
+
+  <!-- Секция тренеров -->
+  <section class="py-16 container mx-auto px-4" data-aos="fade-up">
+    <h3 class="text-3xl font-bold text-center text-green-600 mb-10">Наши профессиональные тренеры</h3>
+    
+    <!-- Секция тренеров с новой структурой (Джеймс Уилсон в центре) -->
+    <div class="grid grid-cols-3 md:grid-cols-4 gap-6">
+      <!-- Первый ряд -->
+      <div class="trainer-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up">
+        <img src="img/trainers/sarah-johnson.jpg" alt="Сара Джонсон" class="w-full h-80 object-cover"> <!-- Уменьшено с h-96 -->
+        <div class="trainer-info">
+          <h4 class="text-lg font-bold">Юля Хадость</h4> <!-- Уменьшено с text-xl -->
+          <p class="text-xs">Специалист по йоге и медитации</p> <!-- Уменьшено с text-sm -->
+          
+          <div class="trainer-specialties">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Занятия</h5> <!-- Уменьшен отступ mb-2 до mb-1 -->
+            <ul class="text-xs space-y-0.5"> <!-- Уменьшено с text-sm space-y-1 -->
+              <li>• Утренняя йога</li>
+              <li>• Силовая йога</li>
+              <li>• Виньяса флоу</li>
+            </ul>
+          </div>
+          
+          <div class="trainer-contact">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Информация</h5> <!-- Уменьшен отступ -->
+            <p class="text-xs">Возраст: 32</p> <!-- Уменьшено с text-sm -->
+            <p class="text-xs">Сертификация: RYT-500</p>
+            <button class="mt-1 bg-white text-green-700 px-2 py-0.5 rounded text-xs font-medium" onclick="showTrainerPopup('sarah')">Подробнее</button> <!-- Уменьшены размеры -->
+          </div>
+        </div>
+      </div>
+      
+      <div class="trainer-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="100">
+        <img src="img/trainers/Ваня.jpg" alt="Майк Томпсон" class="w-full h-80 object-cover"> <!-- Уменьшено с h-96 -->
+        <div class="trainer-info">
+          <h4 class="text-lg font-bold">Майк Томпсон</h4> <!-- Уменьшено с text-xl -->
+          <p class="text-xs">Специалист по HIIT и кардио</p> <!-- Уменьшено с text-sm -->
+          
+          <div class="trainer-specialties">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Занятия</h5> <!-- Уменьшен отступ mb-2 до mb-1 -->
+            <ul class="text-xs space-y-0.5"> <!-- Уменьшено с text-sm space-y-1 -->
+              <li>• HIIT Интенсив</li>
+              <li>• HIIT Кардио</li>
+              <li>• Тренировочный лагерь</li>
+              <li>• Обеденный HIIT</li>
+              <li>• HIIT выходного дня</li>
+            </ul>
+          </div>
+          
+          <div class="trainer-contact">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Информация</h5> <!-- Уменьшен отступ -->
+            <p class="text-xs">Возраст: 35</p> <!-- Уменьшено с text-sm -->
+            <p class="text-xs">Телефон: (555) 123-4002</p>
+            <p class="text-xs">Сертификация: NASM CPT, Специалист по HIIT</p>
+            <button class="mt-1 bg-white text-green-700 px-2 py-0.5 rounded text-xs font-medium" onclick="showTrainerPopup('mike')">Подробнее</button> <!-- Уменьшены размеры -->
+          </div>
+        </div>
+      </div>
+      
+      <div class="trainer-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="200">
+        <img src="img/trainers/Оля.jpg" alt="Элеонора Грэм" class="w-full h-80 object-cover"> <!-- Уменьшено с h-96 -->
+        <div class="trainer-info">
+          <h4 class="text-lg font-bold">Элеонора Грэм</h4> <!-- Уменьшено с text-xl -->
+          <p class="text-xs">Специалист по фитнесу для пожилых</p> <!-- Уменьшено с text-sm -->
+          
+          <div class="trainer-specialties">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Занятия</h5> <!-- Уменьшен отступ mb-2 до mb-1 -->
+            <ul class="text-xs space-y-0.5"> <!-- Уменьшено с text-sm space-y-1 -->
+              <li>• Фитнес для старшего возраста</li>
+              <li>• Мягкая растяжка</li>
+              <li>• Серебряный фитнес</li>
+              <li>• Растяжка и сила для пожилых</li>
+              <li>• Мягкая растяжка</li>
+            </ul>
+          </div>
+          
+          <div class="trainer-contact">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Информация</h5> <!-- Уменьшен отступ -->
+            <p class="text-xs">Возраст: 58</p> <!-- Уменьшено с text-sm -->
+            <p class="text-xs">Телефон: (555) 123-4003</p>
+            <p class="text-xs">Сертификация: Специалист по фитнесу для пожилых, Фонд по борьбе с артритом</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="trainer-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up">
+        <img src="img/trainers/Свити.jpg" alt="Эмма Робертс" class="w-full h-80 object-cover"> <!-- Уменьшено с h-96 -->
+        <div class="trainer-info">
+          <h4 class="text-lg font-bold">Эмма Робертс</h4> <!-- Уменьшено с text-xl -->
+          <p class="text-xs">Специалист по пилатесу и кору</p> <!-- Уменьшено с text-sm -->
+          
+          <div class="trainer-specialties">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Занятия</h5> <!-- Уменьшен отступ mb-2 до mb-1 -->
+            <ul class="text-xs space-y-0.5"> <!-- Уменьшено с text-sm space-y-1 -->
+              <li>• Экспресс-пилатес</li>
+              <li>• Пилатес</li>
+              <li>• Пилатес-фьюжн</li>
+              <li>• Кор и растяжка</li>
+              <li>• Осознанный пилатес</li>
+            </ul>
+          </div>
+          
+          <div class="trainer-contact">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Информация</h5> <!-- Уменьшен отступ -->
+            <p class="text-xs">Возраст: 29</p> <!-- Уменьшено с text-sm -->
+            <p class="text-xs">Телефон: (555) 123-4004</p>
+            <p class="text-xs">Сертификация: Комплексный пилатес, Специалист по кору</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Второй ряд с главным тренером в центре (занимает 2 колонки) -->
+      <div class="trainer-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up">
+        <img src="img/trainers/Бист.jpg" alt="Мр Бист" class="w-full h-80 object-cover"> <!-- Уменьшено с h-96 -->
+        <div class="trainer-info">
+          <h4 class="text-lg font-bold">Мр Бист</h4> <!-- Уменьшено с text-xl -->
+          <p class="text-xs">Инструктор по танцам и зумбе</p> <!-- Уменьшено с text-sm -->
+          
+          <div class="trainer-specialties">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Занятия</h5> <!-- Уменьшен отступ mb-2 до mb-1 -->
+            <ul class="text-xs space-y-0.5"> <!-- Уменьшено с text-sm space-y-1 -->
+              <li>• Основы зумбы</li>
+              <li>• Зумба</li>
+              <li>• Танцевальная вечеринка</li>
+              <li>• Степ-аэробика</li>
+              <li>• Вечеринка зумбы</li>
+            </ul>
+          </div>
+          
+          <div class="trainer-contact">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Информация</h5> <!-- Уменьшен отступ -->
+            <p class="text-xs">Возраст: 31</p> <!-- Уменьшено с text-sm -->
+            <p class="text-xs">Телефон: (555) 123-4006</p>
+            <p class="text-xs">Сертификация: Zumba ZIN, AFAA групповой фитнес</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- ГЛАВНЫЙ ТРЕНЕР (ЦЕНТР) -->
+      <div class="col-span-2 row-span-2 trainer-card rounded-xl overflow-hidden shadow-xl bg-green-50 group" data-aos="zoom-in">
+        <div class="relative">
+          <div class="absolute top-0 right-0 bg-green-600 text-white px-3 py-1 z-10 rounded-bl-lg font-bold text-sm"> <!-- Уменьшены отступы и размер шрифта -->
+            ГЛАВНЫЙ ТРЕНЕР
+          </div>
+          <img src="img/trainers/james-wilson.jpg" alt="Джеймс Уилсон" class="w-full h-[400px] object-cover"> <!-- Уменьшено с h-[500px] -->
+          
+          <!-- Информация снизу, отображаемая при наведении -->
+          <div class="trainer-info bg-gradient-to-t from-green-800 to-green-600/80">
+            <h4 class="text-xl font-bold">Кирилл Кискадёр</h4> <!-- Уменьшено с text-2xl -->
+            <p class="text-base">Тренер по куни </p> <!-- Уменьшено с text-lg -->
+            <p class="mt-1 text-yellow-200">★★★★★ Ведущий эксперт</p> <!-- Уменьшен отступ -->
+            
+            <div class="trainer-specialties">
+              <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1 mt-2">Специализации</h5> <!-- Уменьшены отступы -->
+              <ul class="text-sm space-y-0.5"> <!-- Уменьшено с text-base space-y-1 -->
+                <li>• Силовые тренировки</li>
+                <li>• Body Pump</li>
+                <li>• TRX тренировки</li>
+                <li>• Персональные тренировки</li>
+                <li>• Спортивная подготовка</li>
+                <li>• ГАЧИ МУЧИ в наличии</li>
+              </ul>
+            </div>
+            
+            <div class="trainer-contact">
+              <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1 mt-2">Информация</h5> <!-- Уменьшены отступы -->
+              <p class="text-sm">Возраст: 34 года</p> <!-- Уменьшено с text-base -->
+              <p class="text-sm">Опыт: 12+ лет</p>
+              <p class="text-sm">Телефон: (555) 123-4005</p>
+              <p class="text-sm">Email: james.wilson@healthlife.com</p>
+              <p class="text-sm">Сертификация: CSCS, TRX, CrossFit L3</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="trainer-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="100">
+        <img src="img/trainers/Даник.jpg" alt="Ваганка" class="w-full h-80 object-cover"> <!-- Уменьшено с h-96 -->
+        <div class="trainer-info">
+          <h4 class="text-lg font-bold">Ваганка</h4> <!-- Уменьшено с text-xl -->
+          <p class="text-xs">Тренер по велоспорту и спиннингу</p> <!-- Уменьшено с text-sm -->
+          
+          <div class="trainer-specialties">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Занятия</h5> <!-- Уменьшен отступ mb-2 до mb-1 -->
+            <ul class="text-xs space-y-0.5"> <!-- Уменьшено с text-sm space-y-1 -->
+              <li>• Спиннинг</li>
+              <li>• Спиннинг и скульптурирование</li>
+              <li>• Спиннинг "Счастливый час"</li>
+              <li>• Субботний спиннинг</li>
+            </ul>
+          </div>
+          
+          <div class="trainer-contact">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Информация</h5> <!-- Уменьшен отступ -->
+            <p class="text-xs">Возраст: 33</p> <!-- Уменьшено с text-sm -->
+            <p class="text-xs">Телефон: (555) 123-4007</p>
+            <p class="text-xs">Сертификация: Spinning®, Schwinn Cycling</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Третий ряд -->
+      <div class="trainer-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="100">
+        <img src="img/trainers/32112.jpg" alt="Тони Бейтс" class="w-full h-80 object-cover"> <!-- Уменьшено с h-96 -->
+        <div class="trainer-info">
+          <h4 class="text-lg font-bold">Тони Бейтс</h4> <!-- Уменьшено с text-xl -->
+          <p class="text-xs">Тренер по боксу и боевым искусствам</p> <!-- Уменьшено с text-sm -->
+          
+          <div class="trainer-specialties">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Занятия</h5> <!-- Уменьшен отступ mb-2 до mb-1 -->
+            <ul class="text-xs space-y-0.5"> <!-- Уменьшено с text-sm space-y-1 -->
+              <li>• Фитнес-бокс</li>
+              <li>• Кикбоксинг</li>
+              <li>• Смешанные боевые искусства</li>
+              <li>• Бокс-интенсив</li>
+            </ul>
+          </div>
+          
+          <div class="trainer-contact">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Информация</h5> <!-- Уменьшен отступ -->
+            <p class="text-xs">Возраст: 36</p> <!-- Уменьшено с text-sm -->
+            <p class="text-xs">Телефон: (555) 123-4008</p>
+            <p class="text-xs">Сертификация: NASM, Тренер по боксу, MMA 2-й уровень</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="trainer-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="200">
+        <img src="img/trainers/Билли.jpg" alt="Билли" class="w-full h-80 object-cover"> <!-- Уменьшено с h-96 -->
+        <div class="trainer-info">
+          <h4 class="text-lg font-bold">Билли</h4> <!-- Уменьшено с text-xl -->
+          <p class="text-xs">Эксперт по йоге и медитации</p> <!-- Уменьшено с text-sm -->
+          
+          <div class="trainer-specialties">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Занятия</h5> <!-- Уменьшен отступ mb-2 до mb-1 -->
+            <ul class="text-xs space-y-0.5"> <!-- Уменьшено с text-sm space-y-1 -->
+              <li>• 300 бакс</li>
+              <li>• Вечерняя растяжка</li>
+              <li>• Мастер по прокачке ног</li>
+              <li>• Йога при свечах</li>
+              <li>• Медитация и осознанность</li>
+            </ul>
+          </div>
+          
+          <div class="trainer-contact">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Информация</h5> <!-- Уменьшен отступ -->
+            <p class="text-xs">Возраст: 39</p> <!-- Уменьшено с text-sm -->
+            <p class="text-xs">Телефон: (555) 123-4009</p>
+            <p class="text-xs">Сертификация: E-RYT 500, Учитель медитации</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="trainer-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up">
+        <img src="img/trainers/Сасавот.jpg" alt="Сасавот" class="w-full h-80 object-cover"> <!-- Уменьшено с h-96 -->
+        <div class="trainer-info">
+          <h4 class="text-lg font-bold">Сасавот</h4> <!-- Уменьшено с text-xl -->
+          <p class="text-xs">Тренер по функциональному тренингу</p> <!-- Уменьшено с text-sm -->
+          
+          <div class="trainer-specialties">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Занятия</h5> <!-- Уменьшен отступ mb-2 до mb-1 -->
+            <ul class="text-xs space-y-0.5"> <!-- Уменьшено с text-sm space-y-1 -->
+              <li>• Круговые тренировки</li>
+              <li>• МЧСник</li>
+              <li>• Годзила курская</li>
+            </ul>
+          </div>
+          
+          <div class="trainer-contact">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Информация</h5> <!-- Уменьшен отступ -->
+            <p class="text-xs">Возраст: 38</p> <!-- Уменьшено с text-sm -->
+            <p class="text-xs">Телефон: (555) 123-4010</p>
+            <p class="text-xs">Сертификация: NSCA-CPT, Специалист по гирям</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Четвертый ряд -->
+      <div class="trainer-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="100">
+        <img src="img/trainers/Собачка.jpg" alt="Джони Додеп" class="w-full h-80 object-cover"> <!-- Уменьшено с h-96 -->
+        <div class="trainer-info">
+          <h4 class="text-lg font-bold">Джони Додеп</h4> <!-- Уменьшено с text-xl -->
+          <p class="text-xs">Инструктор расходов</p> <!-- Уменьшено с text-sm -->
+          
+          <div class="trainer-specialties">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Занятия</h5> <!-- Уменьшен отступ mb-2 до mb-1 -->
+            <ul class="text-xs space-y-0.5"> <!-- Уменьшено с text-sm space-y-1 -->
+              <li>• Как правильно депать</li>
+              <li>• Додеп необходим</li>
+            </ul>
+          </div>
+          
+          <div class="trainer-contact">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Информация</h5> <!-- Уменьшен отступ -->
+            <p class="text-xs">Возраст: 31</p> <!-- Уменьшено с text-sm -->
+            <p class="text-xs">Телефон: (555) 123-4011</p>
+            <p class="text-xs">Сертификация: Barre Above, бывшая балерина</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="trainer-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="200">
+        <img src="img/trainers/Слава.jpg" alt="Джош Ким" class="w-full h-80 object-cover"> <!-- Уменьшено с h-96 -->
+        <div class="trainer-info">
+          <h4 class="text-lg font-bold">Джош Ким</h4> <!-- Уменьшено с text-xl -->
+          <p class="text-xs">Тренер по хип-хопу и танцам</p> <!-- Уменьшено с text-sm -->
+          
+          <div class="trainer-specialties">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Занятия</h5> <!-- Уменьшен отступ mb-2 до mb-1 -->
+            <ul class="text-xs space-y-0.5"> <!-- Уменьшено с text-sm space-y-1 -->
+              <li>• Хип-хоп танцы</li>
+              <li>• Кардио-танцы</li>
+            </ul>
+          </div>
+          
+          <div class="trainer-contact">
+            <h5 class="font-semibold text-white border-b border-white/30 pb-1 mb-1">Информация</h5> <!-- Уменьшен отступ -->
+            <p class="text-xs">Возраст: 27</p> <!-- Уменьшено с text-sm -->
+            <p class="text-xs">Телефон: (555) 123-4012</p>
+            <p class="text-xs">Сертификация: Профессиональный танцор, NASM CPT</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Секция сертификации -->
+  <section class="bg-green-50 py-16 px-4" data-aos="fade-up">
+    <div class="container mx-auto">
+      <h3 class="text-3xl font-bold text-center text-green-600 mb-10">Сертификация тренеров</h3>
+      
+      <div class="max-w-4xl mx-auto bg-white rounded-xl shadow p-8">
+        <p class="text-center mb-8">Все наши тренеры — высококвалифицированные профессионалы с признанными в отрасли сертификатами и постоянным обучением.</p>
+        
+        <div class="grid md:grid-cols-3 gap-6 text-center">
+          <div class="p-4">
+            <h4 class="font-bold text-green-600 mb-3">Фитнес-сертификаты</h4>
+            <ul class="space-y-2 text-gray-700">
+              <li>NASM - Национальная академия спортивной медицины</li>
+              <li>ACE - Американский совет по физической культуре</li>
+              <li>NSCA - Национальная ассоциация силы и кондиционирования</li>
+              <li>ACSM - Американский колледж спортивной медицины</li>
+            </ul>
+          </div>
+          
+          <div class="p-4">
+            <h4 class="font-bold text-green-600 mb-3">Специальная сертификация</h4>
+            <ul class="space-y-2 text-gray-700">
+              <li>Yoga Alliance RYT (200 и 500 часов)</li>
+              <li>Программы Les Mills</li>
+              <li>Spinning® и велотренировки</li>
+              <li>TRX тренировки с подвесом</li>
+              <li>Пилатес (мат и реформер)</li>
+            </ul>
+          </div>
+          
+          <div class="p-4">
+            <h4 class="font-bold text-green-600 mb-3">Непрерывное образование</h4>
+            <ul class="space-y-2 text-gray-700">
+              <li>Корректирующие упражнения</li>
+              <li>Тренировки для особых групп</li>
+              <li>Спортивные результаты</li>
+              <li>Коучинг по питанию</li>
+              <li>Первая помощь и СЛР/АВД</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Секция "Присоединяйся к нашей команде" -->
+  <section class="py-16 container mx-auto px-4" data-aos="fade-up">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-3xl font-bold text-center text-green-600 mb-6">Присоединяйтесь к нашей команде</h3>
+      <p class="mb-8">Вы сертифицированный фитнес-специалист, который хочет делиться своей страстью с нашим сообществом? Мы всегда ищем талантливых людей для пополнения нашей команды.</p>
+      <a href="main.html#contact" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">Свяжитесь с нами о возможностях</a>
+    </div>
+  </section>
+
+  <footer class="bg-green-600 text-white text-center p-6 mt-16">
+    <div class="container mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 mb-8 text-left">
+        <div>
+          <h4 class="text-xl font-bold mb-4">Здоровая Жизнь</h4>
+          <p>Ваш путь к здоровому образу жизни начинается здесь. Присоединяйтесь к нашему сообществу и измените свою жизнь уже сегодня.</p>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold mb-4">Быстрые ссылки</h4>
+          <ul class="space-y-2">
+            <li><a href="main.html" class="hover:underline">Главная</a></li>
+            <li><a href="main.html#about" class="hover:underline">О нас</a></li>
+            <li><a href="main.html#services" class="hover:underline">Услуги</a></li>
+            <li><a href="page1.html" class="hover:underline">Расписание</a></li>
+            <li><a href="page2.html" class="hover:underline">Тренеры</a></li>
+            <li><a href="nutritionPlans.html" class="hover:underline">Питание</a></li>
+            <li><a href="blog.html" class="hover:underline">Блог</a></li>
+            <li><a href="pricing.html" class="hover:underline">Цены</a></li>
+            <li><a href="register.html" class="hover:underline">Членство</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold mb-4">Часы работы</h4>
+          <ul class="space-y-2">
+            <li>Понедельник - Пятница: 6:00 - 22:00</li>
+            <li>Суббота: 8:00 - 20:00</li>
+            <li>Воскресенье: 8:00 - 20:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-green-500">
+        &copy; 2025 Фитнес-клуб "Здоровая Жизнь". Все права защищены.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Скрипт проверки статуса входа -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      const registerBtn = document.getElementById('registerBtn');
+      
+      if (currentUser) {
+        // Обновление кнопки регистрации для отображения статуса входа пользователя
+        registerBtn.textContent = `Привет, ${currentUser.firstName}`;
+        registerBtn.classList.remove('bg-white', 'text-green-600');
+        registerBtn.classList.add('bg-green-500', 'text-white');
+      }
+    });
+  </script>
+
+  <!-- Попапы для тренеров (добавляем после секции) -->
+  <div id="trainerPopupOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+    <div id="trainerPopupContent" class="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex relative">
+      <button onclick="closeTrainerPopup()" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      
+      <!-- Контент попапа будет заменяться через JavaScript -->
+      <div class="w-2/5">
+        <img id="popupTrainerImage" src="" alt="Фото тренера" class="w-full h-full object-cover">
+      </div>
+      <div class="w-3/5 p-8 overflow-y-auto">
+        <h3 id="popupTrainerName" class="text-3xl font-bold text-green-700 mb-2"></h3>
+        <p id="popupTrainerTitle" class="text-xl text-gray-600 mb-6"></p>
+        
+        <div id="popupTrainerDescription" class="mb-6"></div>
+        
+        <div class="mb-6">
+          <h4 class="text-xl font-bold text-green-600 mb-3">Специализации</h4>
+          <ul id="popupTrainerSpecialties" class="list-disc pl-5 space-y-1 text-gray-700"></ul>
+        </div>
+        
+        <div class="mb-6">
+          <h4 class="text-xl font-bold text-green-600 mb-3">Контактная информация</h4>
+          <p id="popupTrainerAge" class="mb-1"></p>
+          <p id="popupTrainerExperience" class="mb-1"></p>
+          <p id="popupTrainerPhone" class="mb-1"></p>
+          <p id="popupTrainerEmail" class="mb-1"></p>
+          <p id="popupTrainerCertification" class="mb-1"></p>
+        </div>
+        
+        <div class="pt-4">
+          <a href="#" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-green-700 transition">Записаться на тренировку</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Скрипт для работы с попапами тренеров -->
+  <script>
+    // Информация о тренерах
+    const trainersData = {
+      james: {
+        name: "Джеймс Уилсон",
+        title: "Тренер по силе и кондиционированию",
+        image: "img/trainers/james-wilson.jpg",
+        description: "Более 12 лет опыта в фитнес-индустрии. Специализируется на силовых тренировках, функциональном тренинге и персональных программах. Джеймс обеспечивает высококлассные тренировки, помогая клиентам достичь оптимальных результатов.",
+        specialties: [
+          "Силовые тренировки",
+          "Экспресс-кор",
+          "Body Pump",
+          "TRX тренировки",
+          "Комплексное кондиционирование",
+          "Персональные тренировки",
+          "Спортивная подготовка",
+          "Реабилитационный тренинг",
+          "Кроссфит",
+          "Олимпийская тяжелая атлетика"
+        ],
+        age: "34 года",
+        experience: "12+ лет опыта",
+        phone: "(555) 123-4005",
+        email: "james.wilson@healthlife.com",
+        certification: "CSCS, Мастер-тренер TRX, NASM, CrossFit L3"
+      },
+      sarah: {
+        name: "Сара Джонсон",
+        title: "Специалист по йоге и медитации",
+        image: "img/trainers/sarah-johnson.jpg",
+        description: "Сара практикует йогу уже более 10 лет и помогает клиентам достичь гармонии тела и разума через йогу и медитацию. Её занятия подходят для всех уровней подготовки.",
+        specialties: [
+          "Утренняя йога",
+          "Силовая йога",
+          "Виньяса флоу",
+          "Семейная йога",
+          "Медитация для снятия стресса",
+          "Йога для начинающих",
+          "Йога для улучшения гибкости"
+        ],
+        age: "32 года",
+        experience: "10 лет опыта",
+        phone: "(555) 123-4001",
+        email: "sarah.johnson@healthlife.com",
+        certification: "RYT-500, Инструктор по осознанности"
+      },
+      mike: {
+        name: "Майк Томпсон",
+        title: "Специалист по HIIT и кардио",
+        image: "img/trainers/mike-thompson.jpg",
+        description: "Майк – эксперт по высокоинтенсивным интервальным тренировкам. Его занятия энергичны, эффективны и подходят для тех, кто хочет улучшить выносливость и ускорить метаболизм.",
+        specialties: [
+          "HIIT Интенсив",
+          "HIIT Кардио",
+          "Тренировочный лагерь",
+          "Обеденный HIIT",
+          "HIIT выходного дня",
+          "Табата",
+          "Интервальные тренировки"
+        ],
+        age: "35 лет",
+        experience: "8 лет опыта",
+        phone: "(555) 123-4002",
+        email: "mike.thompson@healthlife.com",
+        certification: "NASM CPT, Специалист по HIIT"
+      }
+      // Можно добавить остальных тренеров аналогично
+    };
+
+    function showTrainerPopup(trainerId) {
+      const trainer = trainersData[trainerId];
+      if (!trainer) return;
+      
+      document.getElementById('popupTrainerImage').src = trainer.image;
+      document.getElementById('popupTrainerImage').alt = trainer.name;
+      document.getElementById('popupTrainerName').textContent = trainer.name;
+      document.getElementById('popupTrainerTitle').textContent = trainer.title;
+      document.getElementById('popupTrainerDescription').textContent = trainer.description;
+      
+      const specialtiesList = document.getElementById('popupTrainerSpecialties');
+      specialtiesList.innerHTML = '';
+      trainer.specialties.forEach(specialty => {
+        const li = document.createElement('li');
+        li.textContent = specialty;
+        specialtiesList.appendChild(li);
+      });
+      
+      document.getElementById('popupTrainerAge').textContent = `Возраст: ${trainer.age}`;
+      document.getElementById('popupTrainerExperience').textContent = `Опыт: ${trainer.experience}`;
+      document.getElementById('popupTrainerPhone').textContent = `Телефон: ${trainer.phone}`;
+      document.getElementById('popupTrainerEmail').textContent = `Email: ${trainer.email}`;
+      document.getElementById('popupTrainerCertification').textContent = `Сертификация: ${trainer.certification}`;
+      
+      document.getElementById('trainerPopupOverlay').classList.remove('hidden');
+      document.body.style.overflow = 'hidden'; // Блокировка прокрутки страницы
+    }
+    
+    function closeTrainerPopup() {
+      document.getElementById('trainerPopupOverlay').classList.add('hidden');
+      document.body.style.overflow = ''; // Восстановление прокрутки страницы
+    }
+  </script>
+
+</body>
+</html>

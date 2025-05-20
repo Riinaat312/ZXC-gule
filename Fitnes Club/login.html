@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Вход - Фитнес-клуб "Здоровая Жизнь"</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.ico">
+  <style>
+    body {
+      background-color: #f3f4f6;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <script>AOS.init();</script>
+
+  <!-- Заголовок с постоянной панелью навигации -->
+  <header class="bg-green-600 text-white p-6 shadow-md" data-aos="fade-down">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold">
+        <a href="main.html">Здоровая Жизнь</a>
+      </h1>
+      <nav class="hidden md:flex space-x-4 text-lg">
+        <a href="main.html" class="hover:underline">Главная</a>
+        <a href="main.html#about" class="hover:underline">О нас</a>
+        <a href="page1.html" class="hover:underline">Расписание</a>
+        <a href="page2.html" class="hover:underline">Тренеры</a>
+        <a href="nutritionPlans.html" class="hover:underline">Питание</a>
+        <a href="pricing.html" class="hover:underline">Цены</a>
+        <a href="#" class="bg-white text-green-600 border border-white px-4 py-2 rounded-full hover:bg-gray-100 transition mr-2">Вход</a>
+        <a href="register.html" class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-700 transition">Регистрация</a>
+      </nav>
+      
+      <!-- Кнопка мобильной навигации -->
+      <button id="mobileMenuBtn" class="md:hidden flex items-center text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Мобильное меню (скрыто по умолчанию) -->
+    <div id="mobileMenu" class="md:hidden hidden bg-green-700 mt-4 rounded-lg p-4">
+      <nav class="flex flex-col space-y-3">
+        <a href="main.html" class="hover:bg-green-600 px-3 py-2 rounded">Главная</a>
+        <a href="main.html#about" class="hover:bg-green-600 px-3 py-2 rounded">О нас</a>
+        <a href="page1.html" class="hover:bg-green-600 px-3 py-2 rounded">Расписание</a>
+        <a href="page2.html" class="hover:bg-green-600 px-3 py-2 rounded">Тренеры</a>
+        <a href="nutritionPlans.html" class="hover:bg-green-600 px-3 py-2 rounded">Питание</a>
+        <a href="pricing.html" class="hover:bg-green-600 px-3 py-2 rounded">Цены</a>
+        <div class="flex space-x-2 mt-2">
+          <a href="#" class="bg-white text-green-600 px-4 py-2 rounded-lg flex-1 text-center">Вход</a>
+          <a href="register.html" class="bg-green-500 text-white px-4 py-2 rounded-lg flex-1 text-center">Регистрация</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Секция входа -->
+  <section class="py-16 container mx-auto px-4">
+    <h3 class="text-3xl font-bold text-center text-green-600 mb-10">Войти в аккаунт</h3>
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow p-8">
+      <form id="loginForm">
+        <div class="mb-6">
+          <label for="email" class="block text-gray-700 mb-2">Email</label>
+          <input type="email" id="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+        </div>
+        <div class="mb-6">
+          <label for="password" class="block text-gray-700 mb-2">Пароль</label>
+          <input type="password" id="password" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+          <div class="flex justify-end mt-2">
+            <a href="#" class="text-sm text-green-600 hover:underline">Забыли пароль?</a>
+          </div>
+        </div>
+        <button type="submit" class="w-full bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">Войти</button>
+      </form>
+      <div id="loginStatus" class="mt-4 text-center hidden"></div>
+      <div class="mt-6 text-center">
+        <p class="text-gray-600">Нет аккаунта? <a href="register.html" class="text-green-600 hover:underline">Зарегистрироваться</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-green-600 text-white text-center p-6 mt-16">
+    <div class="container mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 mb-8 text-left">
+        <div>
+          <h4 class="text-xl font-bold mb-4">Здоровая Жизнь</h4>
+          <p>Ваш путь к здоровому образу жизни начинается здесь. Присоединяйтесь к нашему сообществу и измените свою жизнь сегодня.</p>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold mb-4">Быстрые ссылки</h4>
+          <ul class="space-y-2">
+            <li><a href="main.html" class="hover:underline">Главная</a></li>
+            <li><a href="main.html#about" class="hover:underline">О нас</a></li>
+            <li><a href="main.html#services" class="hover:underline">Услуги</a></li>
+            <li><a href="page1.html" class="hover:underline">Расписание</a></li>
+            <li><a href="page2.html" class="hover:underline">Тренеры</a></li>
+            <li><a href="nutritionPlans.html" class="hover:underline">Питание</a></li>
+            <li><a href="pricing.html" class="hover:underline">Цены</a></li>
+            <li><a href="register.html" class="hover:underline">Членство</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold mb-4">Юридическая информация</h4>
+          <ul class="space-y-2">
+            <li><a href="terms.html" class="hover:underline">Условия и положения</a></li>
+            <li><a href="privacy.html" class="hover:underline">Политика конфиденциальности</a></li>
+            <li>Понедельник - Пятница: 6:00 - 22:00</li>
+            <li>Суббота: 8:00 - 20:00</li>
+            <li>Воскресенье: 8:00 - 20:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-green-500">
+        &copy; 2025 Фитнес-клуб "Здоровая Жизнь". Все права защищены.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Скрипт входа -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      checkLoginStatus();
+      
+      // Функциональность мобильного меню
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Закрытие мобильного меню при нажатии на ссылки
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+          });
+        });
+      }
+      
+      // Отправка формы входа
+      document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Получение значений формы
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        // Отображение сообщения о обработке
+        const statusDiv = document.getElementById('loginStatus');
+        statusDiv.className = 'mt-4 text-center';
+        statusDiv.innerHTML = '<p class="text-yellow-600">Выполняется вход...</p>';
+        statusDiv.classList.remove('hidden');
+        
+        try {
+          // Использование абсолютного URL для правильной маршрутизации
+          const serverUrl = window.location.origin; // Получение базового URL (например, http://localhost:5000)
+          console.log("Отправка запроса входа на:", `${serverUrl}/login`);
+          
+          const response = await fetch(`${serverUrl}/login`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password })
+          });
+          
+          console.log("Статус ответа сервера:", response.status);
+          
+          // Получение данных ответа
+          const data = await response.json();
+          console.log("Данные ответа сервера:", data);
+          
+          if (data.success) {
+            // Сохранение данных пользователя в localStorage для клиентской сессии
+            localStorage.setItem('currentUser', JSON.stringify(data.user));
+            
+            // Также записываем это взаимодействие
+            try {
+              await fetch(`${serverUrl}/log-interaction`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                  userId: data.user.id,
+                  type: 'client_side_login_success',
+                  data: `Пользователь вошел с email ${email} с клиентской стороны`
+                })
+              });
+            } catch (error) {
+              console.warn("Не удалось записать взаимодействие:", error);
+            }
+            
+            statusDiv.innerHTML = '<p class="text-green-600">Вход выполнен успешно! Перенаправление в ваш аккаунт...</p>';
+            
+            // Перенаправление на страницу аккаунта после короткой задержки
+            setTimeout(() => {
+              window.location.href = 'register.html'; // Страница регистрации покажет информацию об аккаунте
+            }, 1000);
+          } else {
+            statusDiv.innerHTML = `<p class="text-red-600">Ошибка: ${data.error || 'Неверные учетные данные'}</p>`;
+          }
+        } catch (error) {
+          console.error('Ошибка входа:', error);
+          
+          // Запасной вариант только с localStorage для демонстрации
+          statusDiv.innerHTML = `<p class="text-yellow-600">Предупреждение: Не удалось подключиться к серверу. Попытка локального входа...</p>`;
+          
+          // Демо-вход - Проверка существует ли пользователь в localStorage
+          const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+          
+          if (currentUser && currentUser.email === email) {
+            // Для демонстрации мы не проверяем пароль в режиме localStorage
+            statusDiv.innerHTML += '<p class="text-green-600">Локальный вход успешен! Перенаправление в ваш аккаунт...</p>';
+            
+            // Перенаправление после короткой задержки
+            setTimeout(() => {
+              window.location.href = 'register.html'; // Страница регистрации покажет информацию об аккаунте
+            }, 1000);
+          } else {
+            statusDiv.innerHTML += '<p class="text-red-600">Неверный email или пароль.</p>';
+          }
+        }
+      });
+    });
+
+    // Проверка вошел ли пользователь в систему
+    function checkLoginStatus() {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      
+      if (currentUser) {
+        // Пользователь уже вошел в систему, перенаправляем на страницу аккаунта
+        window.location.href = 'register.html'; // Страница регистрации покажет информацию об аккаунте
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Планы питания - Фитнес-клуб "Здоровая Жизнь"</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    .hero-section {
+      background-image: url('img/pototo.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .nutrition-card {
+      transition: transform 0.3s ease;
+    }
+    
+    .nutrition-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .meal-item {
+      border-left: 3px solid #059669;
+      transition: all 0.3s ease;
+    }
+    
+    .meal-item:hover {
+      background-color: #f0fdf4;
+      border-left-width: 5px;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <script>AOS.init();</script>
+
+  <!-- Заголовок -->
+  <header class="bg-green-600 text-white p-6 shadow-md" data-aos="fade-down">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold">
+        <a href="main.html">Здоровая Жизнь</a>
+      </h1>
+      <nav class="space-x-6 text-lg">
+        <a href="main.html" class="hover:underline">Главная</a>
+        <a href="main.html#about" class="hover:underline">О нас</a>
+        <a href="main.html#services" class="hover:underline">Услуги</a>
+        <a href="main.html#gallery" class="hover:underline">Галерея</a>
+        <a href="page1.html" class="hover:underline">Расписание</a>
+        <a href="page2.html" class="hover:underline">Тренеры</a>
+        <a href="nutritionPlans.html" class="hover:underline font-bold">Питание</a>
+        <a href="blog.html" class="hover:underline">Блог</a>
+        <a href="pricing.html" class="hover:underline">Цены</a>
+        <a href="main.html#contact" class="hover:underline">Контакты</a>
+        <a href="register.html" class="bg-white text-green-600 px-4 py-2 rounded-full hover:bg-gray-100 transition" id="registerBtn">Регистрация</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Баннер-герой -->
+  <section class="hero-section py-20 text-center" data-aos="zoom-in">
+    <div class="hero-content">
+      <h2 class="text-4xl font-bold text-white mb-4">Планы питания</h2>
+      <p class="text-xl mb-6 text-white">Подпитывайте свой фитнес-путь с помощью научно обоснованных планов питания</p>
+    </div>
+  </section>
+
+  <!-- Введение -->
+  <section class="py-16 container mx-auto px-4" data-aos="fade-up">
+    <div class="max-w-4xl mx-auto">
+      <h3 class="text-3xl font-bold text-center text-green-600 mb-10">Питание для успеха в фитнесе</h3>
+      <p class="text-lg mb-6">В фитнес-клубе "Здоровая Жизнь" мы верим, что правильное питание — это основа любого успешного фитнес-пути. Наши планы питания разработаны сертифицированными диетологами, чтобы дополнить вашу тренировочную программу и помочь вам быстрее достичь ваших фитнес-целей.</p>
+      <p class="text-lg">Независимо от того, хотите ли вы похудеть, нарастить мышечную массу или просто поддерживать более здоровый образ жизни, наши персонализированные планы питания предоставляют вам руководство, необходимое для правильного питания вашего организма.</p>
+    </div>
+  </section>
+
+  <!-- Планы питания -->
+  <section class="bg-green-50 py-16 px-4" data-aos="fade-up">
+    <div class="container mx-auto">
+      <h3 class="text-3xl font-bold text-center text-green-600 mb-10">Наши планы питания</h3>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- План для снижения веса -->
+        <div class="nutrition-card bg-white rounded-xl shadow overflow-hidden" data-aos="fade-up">
+          <div class="bg-blue-500 text-white p-4">
+            <h4 class="text-xl font-bold">План для снижения веса</h4>
+            <p class="text-sm">План с контролем калорий для здорового снижения веса</p>
+          </div>
+          <div class="p-6">
+            <div class="mb-4">
+              <p class="font-medium text-gray-700">Ключевые особенности:</p>
+              <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-600">
+                <li>Сбалансированные макроэлементы</li>
+                <li>1 500-1 800 калорий в день</li>
+                <li>Высокое содержание белка для сохранения мышц</li>
+                <li>Углеводы с низким гликемическим индексом</li>
+                <li>Оптимизация времени приема пищи</li>
+              </ul>
+            </div>
+            <div class="mt-6">
+              <p class="font-medium text-gray-700">Лучше всего для:</p>
+              <p class="text-gray-600 mt-1">Тех, кто хочет уменьшить жировую массу, сохраняя мышечную массу</p>
+            </div>
+            <a href="#sample-plans" class="mt-6 inline-block bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">Посмотреть примерный план</a>
+          </div>
+        </div>
+        
+        <!-- План для наращивания мышц -->
+        <div class="nutrition-card bg-white rounded-xl shadow overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+          <div class="bg-green-600 text-white p-4">
+            <h4 class="text-xl font-bold">План для набора массы</h4>
+            <p class="text-sm">Высокобелковая диета для максимального роста мышц</p>
+          </div>
+          <div class="p-6">
+            <div class="mb-4">
+              <p class="font-medium text-gray-700">Ключевые особенности:</p>
+              <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-600">
+                <li>2 500-3 000 калорий в день</li>
+                <li>Высокое содержание белка (1,6-2г на кг веса тела)</li>
+                <li>Сложные углеводы для энергии</li>
+                <li>Стратегическое питание до/после тренировки</li>
+                <li>Здоровые жиры для выработки гормонов</li>
+              </ul>
+            </div>
+            <div class="mt-6">
+              <p class="font-medium text-gray-700">Лучше всего для:</p>
+              <p class="text-gray-600 mt-1">Тех, кто фокусируется на силовых тренировках и развитии мышц</p>
+            </div>
+            <a href="#sample-plans" class="mt-6 inline-block bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">Посмотреть примерный план</a>
+          </div>
+        </div>
+        
+        <!-- План поддержания и оздоровления -->
+        <div class="nutrition-card bg-white rounded-xl shadow overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+          <div class="bg-purple-600 text-white p-4">
+            <h4 class="text-xl font-bold">Оздоровительный план</h4>
+            <p class="text-sm">Сбалансированное питание для общего здоровья</p>
+          </div>
+          <div class="p-6">
+            <div class="mb-4">
+              <p class="font-medium text-gray-700">Ключевые особенности:</p>
+              <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-600">
+                <li>Сбалансированный профиль макроэлементов</li>
+                <li>Фокус на цельных, необработанных продуктах</li>
+                <li>Богат микроэлементами и антиоксидантами</li>
+                <li>Противовоспалительный выбор продуктов</li>
+                <li>Устойчивый долгосрочный подход</li>
+              </ul>
+            </div>
+            <div class="mt-6">
+              <p class="font-medium text-gray-700">Лучше всего для:</p>
+              <p class="text-gray-600 mt-1">Тех, кто стремится к общему здоровью, энергии и устойчивому оздоровлению</p>
+            </div>
+            <a href="#sample-plans" class="mt-6 inline-block bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">Посмотреть примерный план</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Примерные планы питания -->
+  <section id="sample-plans" class="py-16 container mx-auto px-4" data-aos="fade-up">
+    <h3 class="text-3xl font-bold text-center text-green-600 mb-10">Примерные планы питания</h3>
+    
+    <!-- Вкладки -->
+    <div class="flex flex-wrap mb-8 border rounded-lg overflow-hidden max-w-4xl mx-auto">
+      <button class="tab-btn active-tab bg-green-600 text-white py-3 px-4 sm:px-6 font-medium flex-grow" onclick="showPlan('weight-loss')">Снижение веса</button>
+      <button class="tab-btn py-3 px-4 sm:px-6 font-medium flex-grow hover:bg-green-100" onclick="showPlan('muscle-building')">Набор массы</button>
+      <button class="tab-btn py-3 px-4 sm:px-6 font-medium flex-grow hover:bg-green-100" onclick="showPlan('wellness')">Оздоровление</button>
+    </div>
+    
+    <!-- План для снижения веса -->
+    <div id="weight-loss" class="meal-plan max-w-4xl mx-auto bg-white rounded-xl shadow p-8">
+      <h4 class="text-2xl font-bold text-green-600 mb-6">План питания для снижения веса</h4>
+      <p class="mb-6 text-gray-700">Приблизительно 1 600 калорий в день с акцентом на белок и продукты, богатые клетчаткой, чтобы вы чувствовали себя сытыми при калорийном дефиците.</p>
+      
+      <div class="space-y-6">
+        <!-- Завтрак -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Завтрак (7:00-8:00)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• Греческий йогурт (170 г, 0% жирности) с 1/4 стакана ягод</li>
+            <li>• 1 столовая ложка мёда</li>
+            <li>• 2 столовые ложки семян чиа</li>
+            <li>• Зеленый чай или черный кофе</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~350 | Белки: 25 г | Углеводы: 30 г | Жиры: 10 г</p>
+        </div>
+        
+        <!-- Перекус 1 -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Утренний перекус (10:00)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• 1 среднее яблоко</li>
+            <li>• 12 миндальных орехов</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~170 | Белки: 4 г | Углеводы: 25 г | Жиры: 8 г</p>
+        </div>
+        
+        <!-- Обед -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Обед (12:30-13:30)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• Куриная грудка на гриле (115 г)</li>
+            <li>• Большой салат из зелени с овощами</li>
+            <li>• 1 столовая ложка оливкового масла и уксуса для заправки</li>
+            <li>• 1/2 стакана киноа</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~400 | Белки: 35 г | Углеводы: 30 г | Жиры: 15 г</p>
+        </div>
+        
+        <!-- Перекус 2 -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Дневной перекус (15:30)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• 1 протеиновый коктейль с водой (20 г белка)</li>
+            <li>• 1 маленький банан</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~200 | Белки: 22 г | Углеводы: 25 г | Жиры: 1 г</p>
+        </div>
+        
+        <!-- Ужин -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Ужин (18:30-19:30)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• Запеченный лосось (115 г)</li>
+            <li>• 1 стакан тушеной брокколи</li>
+            <li>• 1/2 стакана бурого риса</li>
+            <li>• 1 чайная ложка оливкового масла</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~380 | Белки: 30 г | Углеводы: 35 г | Жиры: 12 г</p>
+        </div>
+        
+        <!-- Вечерний перекус (по желанию) -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Вечером (по желанию - 20:30)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• Травяной чай</li>
+            <li>• 1/2 стакана творога (1% жирности)</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~100 | Белки: 14 г | Углеводы: 4 г | Жиры: 2 г</p>
+        </div>
+      </div>
+      
+      <div class="mt-8 p-4 bg-blue-50 rounded-lg">
+        <h5 class="font-bold text-lg text-blue-700">Дневные итоги</h5>
+        <p class="mt-2 text-gray-700">Калории: ~1 600 | Белки: 130 г | Углеводы: 149 г | Жиры: 48 г</p>
+        <p class="mt-2 text-sm text-gray-600">Примечание: Потребление воды должно составлять 2-3 литра в день. Корректируйте порции в соответствии с вашими конкретными калорийными потребностями.</p>
+      </div>
+    </div>
+    
+    <!-- План для наращивания мышц -->
+    <div id="muscle-building" class="meal-plan max-w-4xl mx-auto bg-white rounded-xl shadow p-8 hidden">
+      <h4 class="text-2xl font-bold text-green-600 mb-6">План питания для наращивания мышц</h4>
+      <p class="mb-6 text-gray-700">Приблизительно 2 800 калорий в день с высоким содержанием белка и достаточным количеством углеводов для энергии тренировок и поддержки восстановления мышц.</p>
+      
+      <div class="space-y-6">
+        <!-- Завтрак -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Завтрак (6:30-7:30)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• 4 целых яйца + 2 белка, омлет</li>
+            <li>• 2 ломтика цельнозернового хлеба</li>
+            <li>• 1 столовая ложка масла</li>
+            <li>• 1 стакан смешанных ягод</li>
+            <li>• Кофе или чай</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~650 | Белки: 40 г | Углеводы: 45 г | Жиры: 30 г</p>
+        </div>
+        
+        <!-- Перекус 1 -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Утренний перекус (10:00)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• Протеиновый коктейль (30 г белка)</li>
+            <li>• 1 банан</li>
+            <li>• 2 столовые ложки натуральной арахисовой пасты</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~400 | Белки: 35 г | Углеводы: 30 г | Жиры: 15 г</p>
+        </div>
+        
+        <!-- Обед -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Обед (13:00)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• 170 г куриной грудки на гриле</li>
+            <li>• 1 стакан бурого риса</li>
+            <li>• 1 стакан тушеных овощей</li>
+            <li>• 1 столовая ложка оливкового масла</li>
+            <li>• 1 среднее яблоко</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~650 | Белки: 50 г | Углеводы: 70 г | Жиры: 15 г</p>
+        </div>
+        
+        <!-- Перед тренировкой -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Перед тренировкой (15:30)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• 1 стакан греческого йогурта</li>
+            <li>• 1/4 стакана гранолы</li>
+            <li>• 1 столовая ложка меда</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~300 | Белки: 20 г | Углеводы: 40 г | Жиры: 5 г</p>
+        </div>
+        
+        <!-- После тренировки -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">После тренировки (18:00)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• Протеиновый коктейль (30 г белка)</li>
+            <li>• 240 мл апельсинового сока</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~250 | Белки: 30 г | Углеводы: 30 г | Жиры: 0 г</p>
+        </div>
+        
+        <!-- Ужин -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Ужин (19:30)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• 230 г нежирного стейка</li>
+            <li>• 1 большой запеченный картофель</li>
+            <li>• 2 стакана смешанных овощей</li>
+            <li>• 1 столовая ложка оливкового масла</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~550 | Белки: 45 г | Углеводы: 50 г | Жиры: 15 г</p>
+        </div>
+      </div>
+      
+      <div class="mt-8 p-4 bg-green-50 rounded-lg">
+        <h5 class="font-bold text-lg text-green-700">Дневные итоги</h5>
+        <p class="mt-2 text-gray-700">Калории: ~2 800 | Белки: 220 г | Углеводы: 265 г | Жиры: 80 г</p>
+        <p class="mt-2 text-sm text-gray-600">Примечание: Потребляйте 3-4 литра воды ежедневно. Регулируйте время приема пищи в соответствии с вашим расписанием тренировок.</p>
+      </div>
+    </div>
+    
+    <!-- План оздоровления -->
+    <div id="wellness" class="meal-plan max-w-4xl mx-auto bg-white rounded-xl shadow p-8 hidden">
+      <h4 class="text-2xl font-bold text-green-600 mb-6">План питания для оздоровления</h4>
+      <p class="mb-6 text-gray-700">Приблизительно 2 000 калорий в день с акцентом на цельные продукты, противовоспалительные ингредиенты и сбалансированные макроэлементы.</p>
+      
+      <div class="space-y-6">
+        <!-- Завтрак -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Завтрак (7:00-8:00)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• Овсянка на ночь (1/2 стакана овса, замоченного в миндальном молоке)</li>
+            <li>• 1 столовая ложка молотых семян льна</li>
+            <li>• 1/4 стакана черники</li>
+            <li>• 1 столовая ложка миндальной пасты</li>
+            <li>• Зеленый чай</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~400 | Белки: 15 г | Углеводы: 50 г | Жиры: 15 г</p>
+        </div>
+        
+        <!-- Перекус 1 -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Утренний перекус (10:30)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• 1 фрукт (яблоко, груша или апельсин)</li>
+            <li>• 10 сырых миндальных орехов</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~150 | Белки: 3 г | Углеводы: 25 г | Жиры: 7 г</p>
+        </div>
+        
+        <!-- Обед -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Обед (13:00)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• Средиземноморская чаша:</li>
+            <li>• 1/2 стакана киноа</li>
+            <li>• 115 г жареной курицы или нута</li>
+            <li>• 1/4 авокадо</li>
+            <li>• Помидоры черри, огурец, красный лук</li>
+            <li>• 2 столовые ложки хумуса</li>
+            <li>• Лимонный сок и 1 чайная ложка оливкового масла</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~500 | Белки: 30 г | Углеводы: 45 г | Жиры: 20 г</p>
+        </div>
+        
+        <!-- Перекус 2 -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Дневной перекус (16:00)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• Греческий йогурт (140 г)</li>
+            <li>• 1 столовая ложка меда</li>
+            <li>• 1/4 стакана гранолы (с низким содержанием сахара)</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~250 | Белки: 15 г | Углеводы: 30 г | Жиры: 8 г</p>
+        </div>
+        
+        <!-- Ужин -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Ужин (19:00)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• Запеченный лосось (140 г)</li>
+            <li>• 1 стакан жареных овощей (брокколи, морковь, болгарский перец)</li>
+            <li>• 1/2 стакана сладкого картофеля</li>
+            <li>• 1 столовая ложка оливкового масла с травами</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~450 | Белки: 30 г | Углеводы: 40 г | Жиры: 15 г</p>
+        </div>
+        
+        <!-- Вечер -->
+        <div class="meal-item pl-4 py-3">
+          <h5 class="font-bold text-lg text-green-700">Вечер (21:00)</h5>
+          <ul class="mt-2 space-y-1 text-gray-700">
+            <li>• Травяной чай (ромашка, валериана или лаванда)</li>
+            <li>• 1 кусочек черного шоколада (70% или выше)</li>
+          </ul>
+          <p class="mt-2 text-sm text-gray-500">Калории: ~50 | Белки: 1 г | Углеводы: 5 г | Жиры: 3 г</p>
+        </div>
+      </div>
+      
+      <div class="mt-8 p-4 bg-purple-50 rounded-lg">
+        <h5 class="font-bold text-lg text-purple-700">Дневные итоги</h5>
+        <p class="mt-2 text-gray-700">Калории: ~1 800 | Белки: 94 г | Углеводы: 195 г | Жиры: 68 г</p>
+        <p class="mt-2 text-sm text-gray-600">Примечание: Этот план подчеркивает противовоспалительные продукты и регулярное увлажнение. Стремитесь выпивать 8 стаканов воды ежедневно.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Индивидуальный план питания -->
+  <section class="bg-green-50 py-16 px-4" data-aos="fade-up">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h3 class="text-3xl font-bold text-green-600 mb-6">Получите свой индивидуальный план питания</h3>
+      <p class="text-lg mb-8">Хотите персонализированный план питания, специально разработанный для вашего тела, целей и предпочтений? Наши сертифицированные диетологи готовы помочь!</p>
+      
+      <div class="grid md:grid-cols-2 gap-8 bg-white rounded-xl shadow p-8 text-left">
+        <div>
+          <h4 class="text-xl font-bold text-green-600 mb-4">Почему стоит получить индивидуальный план?</h4>
+          <ul class="space-y-2">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Адаптирован к вашему типу телосложения и метаболизму</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Учитывает ваши пищевые предпочтения и ограничения</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Синхронизирован с вашим графиком тренировок</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span>Отслеживание прогресса и корректировки при необходимости</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold text-green-600 mb-4">Как это работает</h4>
+          <ol class="space-y-4 list-decimal pl-5">
+            <li>
+              <p class="font-medium">Запишитесь на консультацию</p>
+              <p class="text-sm text-gray-600">Запланируйте 60-минутную оценку с нашим диетологом</p>
+            </li>
+            <li>
+              <p class="font-medium">Получите свой индивидуальный план</p>
+              <p class="text-sm text-gray-600">Получите детальные планы питания, списки покупок и руководства по порциям</p>
+            </li>
+            <li>
+              <p class="font-medium">Контрольные консультации</p>
+              <p class="text-sm text-gray-600">Отслеживайте прогресс и вносите корректировки каждые 2-4 недели</p>
+            </li>
+            <li>
+              <p class="font-medium">Достигните своих целей</p>
+              <p class="text-sm text-gray-600">Достигните реальных результатов с экспертным руководством и ответственностью</p>
+            </li>
+          </ol>
+        </div>
+        <div class="md:col-span-2 text-center mt-4">
+          <a href="register.html" class="inline-block bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition">Записаться на консультацию</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Советы по питанию -->
+  <section class="py-16 container mx-auto px-4" data-aos="fade-up">
+    <h3 class="text-3xl font-bold text-center text-green-600 mb-10">Быстрые советы по питанию</h3>
+    
+    <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="text-xl font-bold text-green-600 mb-4">Питание перед тренировкой</h4>
+        <ul class="space-y-2">
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">•</span>
+            <span>Ешьте за 1-2 часа до тренировки</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">•</span>
+            <span>Включайте углеводы для энергии (банан, овсянка)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">•</span>
+            <span>Умеренное количество белка для предотвращения распада мышц</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">•</span>
+            <span>Будьте гидратированы - 500-600 мл воды</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="text-xl font-bold text-green-600 mb-4">Контроль порций</h4>
+        <ul class="space-y-2">
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">•</span>
+            <span>Белок: порция размером с ладонь (85-170 г)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">•</span>
+            <span>Углеводы: порция с горстью (120-240 мл)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">•</span>
+            <span>Жиры: порция размером с большой палец (15-30 мл)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">•</span>
+            <span>Овощи: порция размером с кулак (240-480 мл)</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="text-xl font-bold text-green-600 mb-4">Разумные замены</h4>
+        <ul class="space-y-2">
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">•</span>
+            <span>Белый рис → Бурый рис или киноа</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">•</span>
+            <span>Газировка → Газированная вода с лимоном</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">•</span>
+            <span>Молочный шоколад → Темный шоколад (от 70%)</span>
+          </li>
+          <li class="flex items-start">
+            <span class="text-green-500 mr-2">•</span>
+            <span>Обычный йогурт → Греческий йогурт</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-green-600 text-white text-center p-6" data-aos="fade-up">
+    <div class="container mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 mb-8 text-left">
+        <div>
+          <h4 class="text-xl font-bold mb-4">Здоровая Жизнь</h4>
+          <p>Ваш путь к здоровому образу жизни начинается здесь. Присоединяйтесь к нашему сообществу и измените свою жизнь уже сегодня.</p>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold mb-4">Быстрые ссылки</h4>
+          <ul class="space-y-2">
+            <li><a href="main.html" class="hover:underline">Главная</a></li>
+            <li><a href="main.html#about" class="hover:underline">О нас</a></li>
+            <li><a href="main.html#services" class="hover:underline">Услуги</a></li>
+            <li><a href="page1.html" class="hover:underline">Расписание</a></li>
+            <li><a href="page2.html" class="hover:underline">Тренеры</a></li>
+            <li><a href="nutritionPlans.html" class="hover:underline">Питание</a></li>
+            <li><a href="blog.html" class="hover:underline">Блог</a></li>
+            <li><a href="pricing.html" class="hover:underline">Цены</a></li>
+            <li><a href="register.html" class="hover:underline">Членство</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold mb-4">Часы работы</h4>
+          <ul class="space-y-2">
+            <li>Понедельник - Пятница: 6:00 - 22:00</li>
+            <li>Суббота: 8:00 - 20:00</li>
+            <li>Воскресенье: 8:00 - 20:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-green-500">
+        &copy; 2025 Фитнес-клуб "Здоровая Жизнь". Все права защищены.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript для функциональности вкладок -->
+  <script>
+    function showPlan(planId) {
+      // Скрыть все планы
+      document.querySelectorAll('.meal-plan').forEach(plan => {
+        plan.classList.add('hidden');
+      });
+      
+      // Показать выбранный план
+      document.getElementById(planId).classList.remove('hidden');
+      
+      // Обновить стиль вкладок
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-green-600', 'text-white');
+        btn.classList.add('hover:bg-green-100');
+      });
+      
+      // Стиль активной вкладки
+      event.target.classList.add('bg-green-600', 'text-white');
+      event.target.classList.remove('hover:bg-green-100');
+    }
+    
+    // Проверка статуса входа
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      const registerBtn = document.getElementById('registerBtn');
+      
+      if (currentUser) {
+        // Обновить кнопку регистрации, чтобы показать, что пользователь вошел в систему
+        registerBtn.textContent = `Привет, ${currentUser.firstName}`;
+        registerBtn.classList.remove('bg-white', 'text-green-600');
+        registerBtn.classList.add('bg-green-500', 'text-white');
+      }
+    });
+  </script>
+
+</body>
+</html>

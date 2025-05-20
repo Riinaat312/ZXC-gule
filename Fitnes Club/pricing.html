@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Стоимость абонементов - Фитнес-клуб "Здоровая Жизнь"</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    .hero-section {
+      background-image: url('img/pototo.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .pricing-card {
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .pricing-card:hover {
+      transform: translateY(-8px);
+    }
+    .pricing-popular {
+      transform: scale(1.05);
+      z-index: 2;
+    }
+    .pricing-popular:hover {
+      transform: scale(1.05) translateY(-8px);
+    }
+    .popular-badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      white-space: nowrap;
+    }
+    /* Стили для переключателя */
+    .billing-toggle {
+      background-color: #e5e7eb;
+      border-radius: 999px;
+      position: relative;
+      padding: 4px;
+      width: 220px;
+      margin: 0 auto;
+    }
+    .toggle-option {
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      z-index: 1;
+      transition: color 0.3s ease;
+    }
+    .toggle-slider {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 108px;
+      height: calc(100% - 8px);
+      background-color: white;
+      border-radius: 999px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .toggle-slider.annual {
+      transform: translateX(104px);
+    }
+    .monthly-prices, .annual-prices {
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+    .price-hidden {
+      display: none;
+    }
+    .annual-savings {
+      display: inline-block;
+      padding: 2px 8px;
+      background-color: rgba(16, 185, 129, 0.1);
+      color: #10b981;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 4px;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <script>AOS.init();</script>
+
+  <!-- Заголовок с постоянной панелью навигации -->
+  <header class="bg-green-600 text-white p-6 shadow-md" data-aos="fade-down">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold">
+        <a href="main.html">Healthy Life</a>
+      </h1>
+      <nav class="hidden md:flex space-x-4 text-lg">
+        <a href="main.html" class="hover:underline">Главная</a>
+        <a href="main.html#about" class="hover:underline">О нас</a>
+        <a href="page1.html" class="hover:underline">Расписание</a>
+        <a href="page2.html" class="hover:underline">Тренеры</a>
+        <a href="nutritionPlans.html" class="hover:underline">Питание</a>
+        <a href="#" class="hover:underline">Цены</a>
+        <a href="login.html" class="bg-white text-green-600 border border-white px-4 py-2 rounded-full hover:bg-gray-100 transition mr-2" id="loginBtn">Войти</a>
+        <a href="register.html" class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-700 transition" id="registerBtn">Регистрация</a>
+      </nav>
+      
+      <!-- Кнопка мобильной навигации -->
+      <button id="mobileMenuBtn" class="md:hidden flex items-center text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Мобильное меню (скрыто по умолчанию) -->
+    <div id="mobileMenu" class="md:hidden hidden bg-green-700 mt-4 rounded-lg p-4">
+      <nav class="flex flex-col space-y-3">
+        <a href="main.html" class="hover:bg-green-600 px-3 py-2 rounded">Главная</a>
+        <a href="main.html#about" class="hover:bg-green-600 px-3 py-2 rounded">О нас</a>
+        <a href="page1.html" class="hover:bg-green-600 px-3 py-2 rounded">Расписание</a>
+        <a href="page2.html" class="hover:bg-green-600 px-3 py-2 rounded">Тренеры</a>
+        <a href="nutritionPlans.html" class="hover:bg-green-600 px-3 py-2 rounded">Питание</a>
+        <a href="#" class="hover:bg-green-600 px-3 py-2 rounded">Цены</a>
+        <div class="flex space-x-2 mt-2">
+          <a href="login.html" class="bg-white text-green-600 px-4 py-2 rounded-lg flex-1 text-center" id="mobileLoginBtn">Войти</a>
+          <a href="register.html" class="bg-green-500 text-white px-4 py-2 rounded-lg flex-1 text-center" id="mobileRegisterBtn">Регистрация</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Блок героя -->
+  <section class="hero-section py-20 text-center" data-aos="zoom-in">
+    <div class="hero-content">
+      <h2 class="text-4xl font-bold text-white mb-4">Планы абонементов</h2>
+      <p class="text-xl mb-6 text-white">Найдите идеальный план для вашего фитнес-пути</p>
+    </div>
+  </section>
+
+  <!-- Введение в ценовую политику -->
+  <section class="py-16 container mx-auto px-4" data-aos="fade-up">
+    <div class="max-w-3xl mx-auto text-center">
+      <h3 class="text-3xl font-bold text-green-600 mb-6">Гибкие варианты абонементов</h3>
+      <p class="text-lg mb-6">Наши планы абонементов разработаны так, чтобы соответствовать вашему образу жизни и фитнес-целям. Выберите план, который подходит вам лучше всего, и начните свой путь к здоровью уже сегодня.</p>
+      
+      <!-- Переключатель типа оплаты -->
+      <div class="billing-toggle mx-auto mb-8">
+        <div class="toggle-slider" id="toggleSlider"></div>
+        <div class="flex">
+          <div class="toggle-option monthly-option flex-1 text-green-600" id="monthlyOption">Ежемесячно</div>
+          <div class="toggle-option annual-option flex-1 text-gray-600" id="annualOption">Ежегодно <span class="annual-savings">Сэкономьте 20%</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Карточки с ценами -->
+  <section class="pb-20 container mx-auto px-4" data-aos="fade-up">
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <!-- Базовый план -->
+      <div class="pricing-card bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up">
+        <div class="bg-blue-500 p-6 text-white text-center">
+          <h4 class="text-xl font-bold">Базовый план</h4>
+          <p class="text-sm opacity-80">Основной доступ в зал</p>
+        </div>
+        <div class="p-8 text-center">
+          <div class="monthly-prices">
+            <div class="flex justify-center items-start">
+              <span class="text-3xl font-bold">₽</span>
+              <span class="text-5xl font-bold">2900</span>
+              <span class="text-lg mt-2">/месяц</span>
+            </div>
+            <p class="text-sm text-gray-500 mt-2">Без долгосрочных обязательств</p>
+          </div>
+          <div class="annual-prices price-hidden">
+            <div class="flex justify-center items-start">
+              <span class="text-3xl font-bold">₽</span>
+              <span class="text-5xl font-bold">2300</span>
+              <span class="text-lg mt-2">/месяц</span>
+            </div>
+            <p class="text-sm text-gray-500 mt-2">27600₽ в год</p>
+          </div>
+          
+          <ul class="mt-8 space-y-4 text-left">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Полный доступ к оборудованию зала</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Стандартный доступ в часы работы (6:00-22:00)</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Бесплатная фитнес-оценка</span>
+            </li>
+            <li class="flex items-start opacity-50">
+              <svg class="w-5 h-5 text-gray-400 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+              <span>Групповые фитнес-занятия</span>
+            </li>
+            <li class="flex items-start opacity-50">
+              <svg class="w-5 h-5 text-gray-400 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+              <span>Персональные тренировки</span>
+            </li>
+          </ul>
+          
+          <a href="purchase.html?plan=basic" class="mt-10 block bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition">Выбрать базовый план</a>
+        </div>
+      </div>
+      
+      <!-- Стандартный план (Популярный) -->
+      <div class="pricing-card pricing-popular bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+        <div class="popular-badge">
+          <span class="px-4 py-1 bg-yellow-400 text-gray-800 text-sm font-bold rounded-full shadow-md">САМЫЙ ПОПУЛЯРНЫЙ</span>
+        </div>
+        <div class="bg-green-600 p-6 text-white text-center">
+          <h4 class="text-xl font-bold">Стандартный план</h4>
+          <p class="text-sm opacity-80">Расширенный фитнес-опыт</p>
+        </div>
+        <div class="p-8 text-center">
+          <div class="monthly-prices">
+            <div class="flex justify-center items-start">
+              <span class="text-3xl font-bold">₽</span>
+              <span class="text-5xl font-bold">4900</span>
+              <span class="text-lg mt-2">/месяц</span>
+            </div>
+            <p class="text-sm text-gray-500 mt-2">Без долгосрочных обязательств</p>
+          </div>
+          <div class="annual-prices price-hidden">
+            <div class="flex justify-center items-start">
+              <span class="text-3xl font-bold">₽</span>
+              <span class="text-5xl font-bold">3900</span>
+              <span class="text-lg mt-2">/месяц</span>
+            </div>
+            <p class="text-sm text-gray-500 mt-2">46800₽ в год</p>
+          </div>
+          
+          <ul class="mt-8 space-y-4 text-left">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Полный доступ к оборудованию зала</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Расширенный доступ в часы работы (5:00-23:00)</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>2 групповых фитнес-занятия в неделю</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>1 персональная тренировка в месяц</span>
+            </li>
+            <li class="flex items-start opacity-50">
+              <svg class="w-5 h-5 text-gray-400 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+              <span>Консультация по питанию</span>
+            </li>
+          </ul>
+          
+          <a href="purchase.html?plan=standard" class="mt-10 block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition">Выбрать стандартный план</a>
+        </div>
+      </div>
+      
+      <!-- Премиум план -->
+      <div class="pricing-card bg-white rounded-xl shadow-md overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+        <div class="bg-purple-600 p-6 text-white text-center">
+          <h4 class="text-xl font-bold">Премиум план</h4>
+          <p class="text-sm opacity-80">Ультимативный фитнес-опыт</p>
+        </div>
+        <div class="p-8 text-center">
+          <div class="monthly-prices">
+            <div class="flex justify-center items-start">
+              <span class="text-3xl font-bold">₽</span>
+              <span class="text-5xl font-bold">7900</span>
+              <span class="text-lg mt-2">/месяц</span>
+            </div>
+            <p class="text-sm text-gray-500 mt-2">Без долгосрочных обязательств</p>
+          </div>
+          <div class="annual-prices price-hidden">
+            <div class="flex justify-center items-start">
+              <span class="text-3xl font-bold">₽</span>
+              <span class="text-5xl font-bold">6300</span>
+              <span class="text-lg mt-2">/месяц</span>
+            </div>
+            <p class="text-sm text-gray-500 mt-2">75600₽ в год</p>
+          </div>
+          
+          <ul class="mt-8 space-y-4 text-left">
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Круглосуточный доступ ко всем объектам</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Неограниченное количество групповых фитнес-занятий</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>2 персональные тренировки в месяц</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Ежеквартальная консультация по питанию</span>
+            </li>
+            <li class="flex items-start">
+              <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Доступ к премиум зонам восстановления</span>
+            </li>
+          </ul>
+          
+          <a href="purchase.html?plan=premium" class="mt-10 block bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition">Выбрать премиум план</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Дополнительные услуги -->
+  <section class="py-16 bg-green-50" data-aos="fade-up">
+    <div class="container mx-auto px-4">
+      <h3 class="text-3xl font-bold text-center text-green-600 mb-10">Дополнительные услуги</h3>
+      
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white p-6 rounded-xl shadow">
+          <h4 class="text-xl font-bold text-green-600 mb-4">Персональные тренировки</h4>
+          <ul class="space-y-3">
+            <li class="flex justify-between items-center border-b pb-2">
+              <span>Одиночная сессия</span>
+              <div class="flex items-center justify-between">
+                <span class="font-bold mr-3">3600₽</span>
+                <a href="purchase.html?service=personal-training&option=single" class="text-sm bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Записаться</a>
+              </div>
+            </li>
+            <li class="flex justify-between items-center border-b pb-2">
+              <span>Пакет из 5 сессий</span>
+              <div class="flex items-center justify-between">
+                <span class="font-bold mr-3">16500₽</span>
+                <a href="purchase.html?service=personal-training&option=package-5" class="text-sm bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Записаться</a>
+              </div>
+            </li>
+            <li class="flex justify-between items-center border-b pb-2">
+              <span>Пакет из 10 сессий</span>
+              <div class="flex items-center justify-between">
+                <span class="font-bold mr-3">30000₽</span>
+                <a href="purchase.html?service=personal-training&option=package-10" class="text-sm bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Записаться</a>
+              </div>
+            </li>
+            <li class="flex justify-between items-center">
+              <span>Тренировка с партнером (с человека)</span>
+              <div class="flex items-center justify-between">
+                <span class="font-bold mr-3">2400₽</span>
+                <a href="purchase.html?service=personal-training&option=partner" class="text-sm bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Записаться</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow">
+          <h4 class="text-xl font-bold text-green-600 mb-4">Специальные услуги</h4>
+          <ul class="space-y-3">
+            <li class="flex justify-between items-center border-b pb-2">
+              <span>Консультация по питанию</span>
+              <div class="flex items-center justify-between">
+                <span class="font-bold mr-3">5100₽</span>
+                <a href="purchase.html?service=nutrition-consultation" class="text-sm bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Записаться</a>
+              </div>
+            </li>
+            <li class="flex justify-between items-center border-b pb-2">
+              <span>Анализ состава тела</span>
+              <div class="flex items-center justify-between">
+                <span class="font-bold mr-3">2700₽</span>
+                <a href="purchase.html?service=body-composition-analysis" class="text-sm bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Записаться</a>
+              </div>
+            </li>
+            <li class="flex justify-between items-center border-b pb-2">
+              <span>Индивидуальный план питания</span>
+              <div class="flex items-center justify-between">
+                <span class="font-bold mr-3">9000₽</span>
+                <a href="purchase.html?service=custom-meal-plan" class="text-sm bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Записаться</a>
+              </div>
+            </li>
+            <li class="flex justify-between items-center">
+              <span>Фитнес-оценка</span>
+              <div class="flex items-center justify-between">
+                <span class="font-bold mr-3">4500₽</span>
+                <a href="purchase.html?service=fitness-assessment" class="text-sm bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Записаться</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow">
+          <h4 class="text-xl font-bold text-green-600 mb-4">Групповые программы</h4>
+          <ul class="space-y-3">
+            <li class="flex justify-between items-center border-b pb-2">
+              <span>8-недельный курс по снижению веса</span>
+              <div class="flex items-center justify-between">
+                <span class="font-bold mr-3">14900₽</span>
+                <a href="purchase.html?service=group-programs&option=weight-loss" class="text-sm bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Записаться</a>
+              </div>
+            </li>
+            <li class="flex justify-between items-center border-b pb-2">
+              <span>6-недельная программа силовых тренировок</span>
+              <div class="flex items-center justify-between">
+                <span class="font-bold mr-3">11900₽</span>
+                <a href="purchase.html?service=group-programs&option=strength" class="text-sm bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Записаться</a>
+              </div>
+            </li>
+            <li class="flex justify-between items-center border-b pb-2">
+              <span>4-недельный курс для начинающих</span>
+              <div class="flex items-center justify-between">
+                <span class="font-bold mr-3">8900₽</span>
+                <a href="purchase.html?service=group-programs&option=bootcamp" class="text-sm bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Записаться</a>
+              </div>
+            </li>
+            <li class="flex justify-between items-center">
+              <span>Малые группы (за занятие)</span>
+              <div class="flex items-center justify-between">
+                <span class="font-bold mr-3">1500₽</span>
+                <a href="purchase.html?service=group-programs&option=small-group" class="text-sm bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700">Записаться</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Часто задаваемые вопросы -->
+  <section class="py-16 container mx-auto px-4" data-aos="fade-up">
+    <h3 class="text-3xl font-bold text-center text-green-600 mb-10">Часто задаваемые вопросы</h3>
+    
+    <div class="max-w-3xl mx-auto space-y-6">
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="text-lg font-bold mb-2">Могу ли я заморозить свой абонемент?</h4>
+        <p class="text-gray-600">Да, участники могут заморозить свой абонемент на срок до 3 месяцев в году. Абоненты стандартного и премиум планов могут замораживать без дополнительной платы, в то время как участники базового плана оплачивают небольшую ежемесячную плату в течение периода заморозки.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="text-lg font-bold mb-2">Есть ли регистрационный взнос?</h4>
+        <p class="text-gray-600">Мы периодически проводим акции без регистрационного взноса. Обычный регистрационный взнос составляет 2900₽, который включает в себя персонализированную фитнес-оценку и ориентацию.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="text-lg font-bold mb-2">Как мне отменить свой абонемент?</h4>
+        <p class="text-gray-600">Для отмены абонемента требуется письменное уведомление за 30 дней. Вы можете подать заявку на отмену через свой онлайн-аккаунт или посетив стойку регистрации.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-xl shadow">
+        <h4 class="text-lg font-bold mb-2">Существуют ли семейные или корпоративные скидки?</h4>
+        <p class="text-gray-600">Да, мы предлагаем скидку 10% для дополнительных членов семьи и специальные корпоративные тарифы для компаний с 5 и более сотрудниками. Свяжитесь с нашей командой по вопросам членства для получения подробной информации.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Призыв к действию -->
+  <section class="py-16 bg-green-600 text-white" data-aos="fade-up">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-6">Готовы начать свой путь к здоровью?</h3>
+      <p class="text-xl max-w-3xl mx-auto mb-8">Присоединяйтесь к фитнес-клубу "Здоровая Жизнь" сегодня и сделайте первый шаг к более здоровому и сильному себе.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="register.html" class="bg-white text-green-600 px-8 py-3 rounded-lg font-bold text-lg hover:bg-gray-100 transition">Присоединиться сейчас</a>
+        <a href="main.html#contact" class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-white hover:text-green-600 transition">Связаться с нами</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-green-800 text-white text-center p-6" data-aos="fade-up">
+    <div class="container mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 mb-8 text-left">
+        <div>
+          <h4 class="text-xl font-bold mb-4">Healthy Life</h4>
+          <p>Ваш путь к более здоровому образу жизни начинается здесь. Присоединяйтесь к нашему сообществу и измените свою жизнь уже сегодня.</p>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold mb-4">Быстрые ссылки</h4>
+          <ul class="space-y-2">
+            <li><a href="main.html" class="hover:underline">Главная</a></li>
+            <li><a href="main.html#about" class="hover:underline">О нас</a></li>
+            <li><a href="main.html#services" class="hover:underline">Услуги</a></li>
+            <li><a href="page1.html" class="hover:underline">Расписание</a></li>
+            <li><a href="page2.html" class="hover:underline">Тренеры</a></li>
+            <li><a href="nutritionPlans.html" class="hover:underline">Питание</a></li>
+            <li><a href="blog.html" class="hover:underline">Блог</a></li>
+            <li><a href="pricing.html" class="hover:underline">Цены</a></li>
+            <li><a href="register.html" class="hover:underline">Абонемент</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xl font-bold mb-4">Часы работы</h4>
+          <ul class="space-y-2">
+            <li>Пн - Пт: 6:00 - 22:00</li>
+            <li>Сб: 8:00 - 20:00</li>
+            <li>Вс: 8:00 - 20:00</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-green-700">
+        &copy; 2025 Healthy Life Fitness Club. Все права защищены.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Секция для пользователей без абонемента -->
+  <section id="no-membership-alert" class="container mx-auto px-4 mt-6 hidden">
+    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm text-yellow-700">
+            У вас еще нет активного абонемента. Пожалуйста, выберите план ниже, чтобы разблокировать все функции.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Скрипт проверки входа в систему -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      const registerBtn = document.getElementById('registerBtn');
+      const noMembershipAlert = document.getElementById('no-membership-alert');
+      
+      if (currentUser) {
+        // Update register button to show user is logged in
+        registerBtn.textContent = `Hello, ${currentUser.firstName}`;
+        registerBtn.classList.remove('bg-green-500', 'text-white');
+        registerBtn.classList.add('bg-white', 'text-green-600');
+        
+        // Check if user has a membership and show alert if needed
+        if (currentUser.membershipType === "none" || !currentUser.membershipType) {
+          noMembershipAlert.classList.remove('hidden');
+        }
+      }
+      
+      // Mobile menu functionality
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking links
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+          });
+        });
+      }
+      
+      // Pricing toggle functionality
+      const toggleSlider = document.getElementById('toggleSlider');
+      const monthlyOption = document.getElementById('monthlyOption');
+      const annualOption = document.getElementById('annualOption');
+      const monthlyPrices = document.querySelectorAll('.monthly-prices');
+      const annualPrices = document.querySelectorAll('.annual-prices');
+      
+      // Function to toggle between monthly and annual pricing
+      function togglePricing(isAnnual) {
+        if (isAnnual) {
+          toggleSlider.classList.add('annual');
+          monthlyOption.classList.remove('text-green-600');
+          monthlyOption.classList.add('text-gray-600');
+          annualOption.classList.remove('text-gray-600');
+          annualOption.classList.add('text-green-600');
+          
+          monthlyPrices.forEach(el => el.classList.add('price-hidden'));
+          annualPrices.forEach(el => el.classList.remove('price-hidden'));
+        } else {
+          toggleSlider.classList.remove('annual');
+          monthlyOption.classList.add('text-green-600');
+          monthlyOption.classList.remove('text-gray-600');
+          annualOption.classList.add('text-gray-600');
+          annualOption.classList.remove('text-green-600');
+          
+          monthlyPrices.forEach(el => el.classList.remove('price-hidden'));
+          annualPrices.forEach(el => el.classList.add('price-hidden'));
+        }
+      }
+      
+      // Event listeners for toggle
+      monthlyOption.addEventListener('click', () => togglePricing(false));
+      annualOption.addEventListener('click', () => togglePricing(true));
+      
+      // Store the billing period preference when navigating to purchase page
+      document.querySelectorAll('a[href^="purchase.html"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const isAnnual = toggleSlider.classList.contains('annual');
+          let href = this.getAttribute('href');
+          href += href.includes('?') ? '&' : '?';
+          href += 'billing=' + (isAnnual ? 'annual' : 'monthly');
+          this.setAttribute('href', href);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
